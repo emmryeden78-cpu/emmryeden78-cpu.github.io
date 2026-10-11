@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emmry Eden — Gestion des Systèmes d'Information</title>
+  <meta name="description" content="Portfolio d'Emmry Eden, spécialiste en Gestion des Systèmes d'Information basé à Douala, Cameroun. Toujours disponible." />
+  <meta name="theme-color" content="#05060f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== PRELOADER (séquence de boot) ===== -->
+  <div id="preloader">
+    <div class="boot">
+      <div class="boot-lines" id="bootLines"></div>
+      <div class="boot-bar"><span id="bootBar"></span></div>
+      <div class="boot-pct" id="bootPct">0%</div>
+    </div>
+  </div>
+
+  <!-- ===== CURSEUR PERSONNALISÉ ===== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ===== BARRE DE PROGRESSION ===== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== FOND ANIMÉ ===== -->
+  <canvas id="network"></canvas>
+  <div class="aurora">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav" id="nav">
+    <a href="#accueil" class="logo magnetic" data-text="EE">
+      <span class="logo-bracket">&lt;</span>EE<span class="logo-bracket">/&gt;</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#accueil" class="active">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#services">Services</a>
+      <a href="#projets">Projets</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-status"><span class="pulse"></span> Disponible</div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="pulse"></span> Toujours disponible · Douala, Cameroun 🇨🇲
+        </div>
+        <p class="hero-hello reveal">Bonjour, je suis</p>
+        <h1 class="hero-title">
+          <span class="glitch" data-text="EMMRY EDEN" id="heroName">EMMRY EDEN</span>
+        </h1>
+        <h2 class="hero-sub reveal">
+          <span class="mono">&gt;</span> <span id="typed"></span><span class="caret">|</span>
+        </h2>
+        <p class="hero-desc reveal">
+          Je conçois, sécurise et optimise des <strong>systèmes d'information</strong> qui transforment
+          les données en décisions et la technologie en avantage compétitif.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#contact" class="btn btn-primary magnetic"><span>Travaillons ensemble</span><i>→</i></a>
+          <a href="#projets" class="btn btn-ghost magnetic"><span>Voir mes projets</span></a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="stat"><b class="counter" data-target="50">0</b><span>+ Projets</span></div>
+          <div class="stat"><b class="counter" data-target="99">0</b><span>% Uptime visé</span></div>
+          <div class="stat"><b class="counter" data-target="24">0</b><span>/7 Disponible</span></div>
+        </div>
+      </div>
+
+      <!-- Orbe 3D -->
+      <div class="hero-visual reveal">
+        <div class="orb-wrap" id="orbWrap">
+          <div class="orb">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+            <div class="core">
+              <span class="core-txt">SI</span>
+            </div>
+            <div class="sat s1">🗄️</div>
+            <div class="sat s2">🛡️</div>
+            <div class="sat s3">☁️</div>
+            <div class="sat s4">📊</div>
+          </div>
+          <div class="terminal-card glass">
+            <div class="term-head"><i></i><i></i><i></i><span>emmry@si:~</span></div>
+            <pre class="term-body" id="termBody"></pre>
+          </div>
+        </div>
+      </div>
+
+      <a href="#apropos" class="scroll-down"><span></span></a>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="marquee">
+      <div class="marquee-track" id="marquee">
+        <span>ERP</span><span>✦</span><span>SQL</span><span>✦</span><span>Réseaux</span><span>✦</span>
+        <span>Cybersécurité</span><span>✦</span><span>Cloud</span><span>✦</span><span>Business Intelligence</span><span>✦</span>
+        <span>ITIL</span><span>✦</span><span>Développement Web</span><span>✦</span><span>Merise / UML</span><span>✦</span><span>Gouvernance SI</span><span>✦</span>
+        <span>Power BI</span><span>✦</span><span>Linux</span><span>✦</span><span>Windows Server</span><span>✦</span>
+      </div>
+    </div>
+
+    <!-- ===== À PROPOS ===== -->
+    <section class="section" id="apropos">
+      <div class="section-head reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">À propos <span class="grad">de moi</span></h2>
+      </div>
+      <div class="about">
+        <div class="about-card glass tilt reveal">
+          <div class="avatar">
+            <div class="avatar-inner">EE</div>
+            <svg class="avatar-ring" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="92" />
+            </svg>
+          </div>
+          <h3>Emmry Eden</h3>
+          <p class="mono muted">Gestionnaire des Systèmes d'Information</p>
+          <ul class="about-info">
+            <li><span>📍</span> Douala, Cameroun</li>
+            <li><span>✉️</span> <a href="mailto:emmryeden78@gmail.com">emmryeden78@gmail.com</a></li>
+            <li><span>📞</span> <a href="tel:+237657261108">+237 657 26 11 08</a></li>
+            <li><span>🟢</span> Toujours disponible</li>
+          </ul>
+        </div>
+        <div class="about-text">
+          <p class="lead reveal">
+            Passionné par la rencontre entre <span class="hl">technologie</span> et <span class="hl">stratégie</span>,
+            j'aide les organisations à tirer le meilleur de leur système d'information.
+          </p>
+          <p class="reveal">
+            De l'analyse des besoins à la mise en production, j'interviens sur toute la chaîne :
+            modélisation des processus, administration des bases de données, déploiement d'infrastructures
+            réseau, sécurisation des accès et pilotage par la donnée. Mon objectif : des systèmes
+            <strong>fiables, sécurisés et alignés sur les objectifs métier</strong>.
+          </p>
+          <div class="about-grid">
+            <div class="mini glass reveal"><b>🎯</b><h4>Vision</h4><p>Aligner le SI sur la stratégie de l'entreprise.</p></div>
+            <div class="mini glass reveal"><b>⚙️</b><h4>Rigueur</h4><p>Processus documentés, méthodes éprouvées.</p></div>
+            <div class="mini glass reveal"><b>🔒</b><h4>Sécurité</h4><p>Protéger les données, garantir la continuité.</p></div>
+            <div class="mini glass reveal"><b>🚀</b><h4>Réactivité</h4><p>Disponible 24/7 pour vos urgences.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPÉTENCES ===== -->
+    <section class="section" id="competences">
+      <div class="section-head reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Mes <span class="grad">compétences</span></h2>
+      </div>
+
+      <div class="skills">
+        <div class="skill-rings">
+          <div class="ring-skill reveal" data-value="92"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><b>0%</b><span>Bases de données</span></div>
+          <div class="ring-skill reveal" data-value="88"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><b>0%</b><span>Réseaux & Infra</span></div>
+          <div class="ring-skill reveal" data-value="85"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><b>0%</b><span>Cybersécurité</span></div>
+          <div class="ring-skill reveal" data-value="90"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><b>0%</b><span>Gestion de projet SI</span></div>
+        </div>
+
+        <div class="skill-bars">
+          <div class="bar reveal" data-value="90"><div class="bar-top"><span>Analyse & Modélisation (Merise, UML)</span><b>90%</b></div><div class="bar-track"><i></i></div></div>
+          <div class="bar reveal" data-value="88"><div class="bar-top"><span>SQL · MySQL · PostgreSQL · Oracle</span><b>88%</b></div><div class="bar-track"><i></i></div></div>
+          <div class="bar reveal" data-value="85"><div class="bar-top"><span>Administration Windows Server & Linux</span><b>85%</b></div><div class="bar-track"><i></i></div></div>
+          <div class="bar reveal" data-value="82"><div class="bar-top"><span>ERP & Progiciels de gestion</span><b>82%</b></div><div class="bar-track"><i></i></div></div>
+          <div class="bar reveal" data-value="86"><div class="bar-top"><span>Business Intelligence (Power BI, Excel)</span><b>86%</b></div><div class="bar-track"><i></i></div></div>
+          <div class="bar reveal" data-value="80"><div class="bar-top"><span>Cloud & Virtualisation</span><b>80%</b></div><div class="bar-track"><i></i></div></div>
+        </div>
+      </div>
+
+      <div class="tech-cloud reveal">
+        <span>MySQL</span><span>PostgreSQL</span><span>Oracle</span><span>Power BI</span><span>Excel avancé</span>
+        <span>Cisco</span><span>Active Directory</span><span>Linux</span><span>Windows Server</span><span>VMware</span>
+        <span>Azure</span><span>AWS</span><span>ITIL</span><span>COBIT</span><span>Merise</span><span>UML</span>
+        <span>Python</span><span>PHP</span><span>HTML/CSS/JS</span><span>Laravel</span><span>React</span><span>Node.js</span><span>Git</span><span>Odoo</span><span>SAP</span>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="section" id="services">
+      <div class="section-head reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Ce que je <span class="grad">propose</span></h2>
+      </div>
+      <div class="services">
+        <article class="service glass tilt reveal">
+          <div class="service-ico">🧭</div>
+          <h3>Audit & Conseil SI</h3>
+          <p>Diagnostic complet de votre système d'information, cartographie et schéma directeur pour orienter vos investissements.</p>
+          <span class="service-num">01</span>
+        </article>
+        <article class="service glass tilt reveal">
+          <div class="service-ico">🗄️</div>
+          <h3>Bases de données</h3>
+          <p>Conception, modélisation, optimisation et sauvegarde de vos bases pour des données fiables et performantes.</p>
+          <span class="service-num">02</span>
+        </article>
+        <article class="service glass tilt reveal">
+          <div class="service-ico">🌐</div>
+          <h3>Réseaux & Infrastructure</h3>
+          <p>Déploiement et administration de réseaux, serveurs et postes de travail, avec supervision continue.</p>
+          <span class="service-num">03</span>
+        </article>
+        <article class="service glass tilt reveal">
+          <div class="service-ico">🛡️</div>
+          <h3>Sécurité informatique</h3>
+          <p>Politique de sécurité, gestion des accès, plans de sauvegarde et de reprise d'activité (PRA/PCA).</p>
+          <span class="service-num">04</span>
+        </article>
+        <article class="service glass tilt reveal">
+          <div class="service-ico">📊</div>
+          <h3>Business Intelligence</h3>
+          <p>Tableaux de bord interactifs et indicateurs clés pour piloter votre activité en temps réel.</p>
+          <span class="service-num">05</span>
+        </article>
+        <article class="service glass tilt reveal">
+          <div class="service-ico">🛠️</div>
+          <h3>Support & Maintenance</h3>
+          <p>Assistance utilisateurs, maintenance préventive et corrective — disponible à tout moment.</p>
+          <span class="service-num">06</span>
+        </article>
+        <article class="service service-featured glass tilt reveal">
+          <div class="featured-text">
+            <span class="featured-badge">✦ Nouveau service</span>
+            <div class="service-ico">💻</div>
+            <h3>Développement d'applications web</h3>
+            <p>Sites vitrines, applications de gestion sur mesure, tableaux de bord et plateformes métier :
+              je conçois des applications web <strong>rapides, sécurisées et adaptées au mobile</strong>,
+              connectées à vos bases de données et à votre système d'information.</p>
+            <ul class="featured-list">
+              <li>Applications de gestion (stocks, RH, facturation…)</li>
+              <li>Sites web modernes &amp; responsives</li>
+              <li>API &amp; intégration avec vos outils existants</li>
+              <li>Hébergement, mise en ligne &amp; maintenance</li>
+            </ul>
+            <div class="tags"><span>HTML/CSS/JS</span><span>PHP</span><span>Laravel</span><span>React</span><span>Node.js</span><span>MySQL</span></div>
+          </div>
+          <div class="code-window">
+            <div class="term-head"><i></i><i></i><i></i><span>app.js</span></div>
+            <pre class="code-body" id="codeBody"></pre>
+          </div>
+          <span class="service-num">07</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PROJETS ===== -->
+    <section class="section" id="projets">
+      <div class="section-head reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Projets <span class="grad">phares</span></h2>
+      </div>
+      <div class="filters reveal" id="filters">
+        <button class="active" data-filter="all">Tous</button>
+        <button data-filter="data">Données</button>
+        <button data-filter="infra">Infrastructure</button>
+        <button data-filter="gestion">Gestion</button>
+      </div>
+      <div class="projects" id="projects">
+        <article class="project glass tilt reveal" data-cat="gestion">
+          <div class="project-visual v1"><span>ERP</span></div>
+          <div class="project-body">
+            <div class="tags"><span>Odoo</span><span>PostgreSQL</span><span>Processus</span></div>
+            <h3>Déploiement d'un ERP pour PME</h3>
+            <p>Analyse des processus métier, paramétrage des modules ventes, stocks et comptabilité, formation des équipes.</p>
+          </div>
+        </article>
+        <article class="project glass tilt reveal" data-cat="data">
+          <div class="project-visual v2"><span>BI</span></div>
+          <div class="project-body">
+            <div class="tags"><span>Power BI</span><span>SQL</span><span>KPI</span></div>
+            <h3>Tableau de bord décisionnel</h3>
+            <p>Centralisation des données commerciales et création de tableaux de bord dynamiques pour la direction.</p>
+          </div>
+        </article>
+        <article class="project glass tilt reveal" data-cat="infra">
+          <div class="project-visual v3"><span>NET</span></div>
+          <div class="project-body">
+            <div class="tags"><span>Cisco</span><span>VLAN</span><span>Active Directory</span></div>
+            <h3>Refonte d'infrastructure réseau</h3>
+            <p>Segmentation du réseau, mise en place d'un annuaire centralisé et sécurisation des accès multi-sites.</p>
+          </div>
+        </article>
+        <article class="project glass tilt reveal" data-cat="data">
+          <div class="project-visual v4"><span>DB</span></div>
+          <div class="project-body">
+            <div class="tags"><span>Merise</span><span>MySQL</span><span>PHP</span></div>
+            <h3>Système de gestion scolaire</h3>
+            <p>Modélisation et développement d'une application de gestion des inscriptions, notes et paiements.</p>
+          </div>
+        </article>
+        <article class="project glass tilt reveal" data-cat="infra">
+          <div class="project-visual v5"><span>SEC</span></div>
+          <div class="project-body">
+            <div class="tags"><span>Backup</span><span>PRA</span><span>Linux</span></div>
+            <h3>Plan de sauvegarde & reprise</h3>
+            <p>Stratégie de sauvegarde 3-2-1 automatisée et procédures de reprise testées pour garantir la continuité.</p>
+          </div>
+        </article>
+        <article class="project glass tilt reveal" data-cat="gestion">
+          <div class="project-visual v6"><span>ITSM</span></div>
+          <div class="project-body">
+            <div class="tags"><span>ITIL</span><span>GLPI</span><span>Helpdesk</span></div>
+            <h3>Gestion de parc & helpdesk</h3>
+            <p>Inventaire automatisé du parc informatique et mise en place d'un système de tickets selon ITIL.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PARCOURS ===== -->
+    <section class="section" id="parcours">
+      <div class="section-head reveal">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Mon <span class="grad">parcours</span></h2>
+      </div>
+      <div class="timeline" id="timeline">
+        <div class="timeline-line"><span id="timelineFill"></span></div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <span class="tl-date mono">Aujourd'hui</span>
+            <h3>Consultant en Systèmes d'Information</h3>
+            <p>Accompagnement d'entreprises dans la gestion, la sécurisation et l'optimisation de leur SI.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <span class="tl-date mono">Expérience</span>
+            <h3>Administrateur systèmes & réseaux</h3>
+            <p>Administration des serveurs, gestion des utilisateurs, supervision et support technique.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <span class="tl-date mono">Formation</span>
+            <h3>Diplôme en Gestion des Systèmes d'Information</h3>
+            <p>Analyse, conception des SI, bases de données, réseaux, management et gestion de projets.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <span class="tl-date mono">Certifications</span>
+            <h3>Formation continue</h3>
+            <p>Veille technologique permanente : cloud, cybersécurité, data et bonnes pratiques ITIL.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="section-head reveal">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Parlons de <span class="grad">votre projet</span></h2>
+      </div>
+      <p class="contact-intro reveal">Une idée, un besoin, une urgence ? Je suis <strong>toujours disponible</strong>. Écrivez-moi, je réponds rapidement.</p>
+
+      <div class="contact-grid">
+        <div class="contact-cards">
+          <a class="c-card glass tilt reveal" href="mailto:emmryeden78@gmail.com" data-copy="emmryeden78@gmail.com">
+            <div class="c-ico">✉️</div>
+            <div><span>Email</span><b>emmryeden78@gmail.com</b></div>
+            <button class="copy" type="button" aria-label="Copier">⧉</button>
+          </a>
+          <a class="c-card glass tilt reveal" href="tel:+237657261108" data-copy="+237 657 26 11 08">
+            <div class="c-ico">📞</div>
+            <div><span>Téléphone</span><b>+237 657 26 11 08</b></div>
+            <button class="copy" type="button" aria-label="Copier">⧉</button>
+          </a>
+          <a class="c-card glass tilt reveal" href="https://wa.me/237657261108" target="_blank" rel="noopener">
+            <div class="c-ico">💬</div>
+            <div><span>WhatsApp</span><b>Discutons maintenant</b></div>
+          </a>
+          <div class="c-card glass tilt reveal">
+            <div class="c-ico">📍</div>
+            <div><span>Localisation</span><b>Douala, Cameroun</b></div>
+          </div>
+        </div>
+
+        <form class="contact-form glass reveal" id="contactForm">
+          <div class="field">
+            <input type="text" id="fName" required placeholder=" " />
+            <label for="fName">Votre nom</label>
+          </div>
+          <div class="field">
+            <input type="email" id="fEmail" required placeholder=" " />
+            <label for="fEmail">Votre email</label>
+          </div>
+          <div class="field">
+            <input type="text" id="fSubject" required placeholder=" " />
+            <label for="fSubject">Sujet</label>
+          </div>
+          <div class="field">
+            <textarea id="fMsg" rows="5" required placeholder=" "></textarea>
+            <label for="fMsg">Votre message</label>
+          </div>
+          <button type="submit" class="btn btn-primary magnetic full"><span>Envoyer le message</span><i>✈</i></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-big" aria-hidden="true">EMMRY EDEN</div>
+    <p>© <span id="year"></span> Emmry Eden · Gestion des Systèmes d'Information · Douala 🇨🇲</p>
+    <a href="#accueil" class="to-top magnetic" aria-label="Haut de page">↑</a>
+  </footer>
+
+  <!-- ===== BOUTON WHATSAPP FLOTTANT ===== -->
+  <a class="wa-float" id="waFloat" href="https://wa.me/237657261108?text=Bonjour%20Emmry%2C%20j%27ai%20vu%20votre%20portfolio%20et%20j%27aimerais%20discuter%20d%27un%20projet."
+     target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <span class="wa-tip">Discutons sur WhatsApp 👋</span>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16.04 3C9.08 3 3.43 8.64 3.43 15.6c0 2.22.58 4.39 1.69 6.3L3.33 28.5l6.78-1.78a12.6 12.6 0 0 0 5.93 1.5h.01c6.95 0 12.6-5.65 12.6-12.6 0-3.37-1.31-6.53-3.69-8.91A12.52 12.52 0 0 0 16.04 3zm0 23.08h-.01a10.5 10.5 0 0 1-5.35-1.46l-.38-.23-4.02 1.05 1.07-3.92-.25-.4a10.44 10.44 0 0 1-1.6-5.52c0-5.79 4.71-10.5 10.55-10.5 2.8 0 5.44 1.1 7.42 3.08a10.43 10.43 0 0 1 3.07 7.43c0 5.79-4.71 10.47-10.5 10.47zm5.76-7.85c-.32-.16-1.87-.92-2.16-1.03-.29-.1-.5-.16-.71.16-.21.32-.81 1.03-1 1.24-.18.21-.37.24-.68.08-.32-.16-1.33-.49-2.54-1.57-.94-.84-1.57-1.87-1.75-2.18-.18-.32-.02-.49.14-.65.14-.14.32-.37.47-.55.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.07-1.1 2.62s1.13 3.04 1.29 3.25c.16.21 2.22 3.39 5.37 4.75.75.32 1.34.52 1.8.66.75.24 1.44.21 1.98.13.6-.09 1.87-.76 2.13-1.5.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.6-.37z"/></svg>
+    <b class="wa-badge">1</b>
+  </a>
+
+  <div class="toast" id="toast">Copié !</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
